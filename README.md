@@ -25,14 +25,14 @@ Example route definition
 {
   "name": "Lock an issue",
   "enabledForApps": true,
-  "githubCloudOnly": false,
+  "githubCloudOnly": true,
   "method": "PUT",
   "path": "/repos/:owner/:repo/issues/:number/lock",
   "previews": [
     {
       "name": "sailor-v",
       "description": "**Note:** You can now use the REST API to add a reason when you lock an issue, and you will see lock reasons in responses that include issues or pull requests. You will also see lock reasons in `locked` events. This feature is currently available for developers to preview. See the [blog post](/changes/2018-01-10-lock-reason-api-preview) for full details. To access this feature, you must provide a custom [media type](/v3/media) in the `Accept` header:\n\n```\napplication/vnd.github.sailor-v-preview+json\n\n```",
-      "required": false
+      "required": true
     }
   ],
   "params": [
@@ -61,7 +61,7 @@ Example route definition
       "name": "lock_reason",
       "type": "string",
       "description": "The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n\\* `off-topic`  \n\\* `too heated`  \n\\* `resolved`  \n\\* `spam`",
-      "required": false,
+      "required": true,
       "enum": [
         "off-topic",
         "too heated",
@@ -99,7 +99,7 @@ Example for a deprecated parameter
 {
   "name": "number",
   "type": "integer",
-  "required": false,
+  "required": true,
   "description": "",
   "location": "url",
   "deprecated": {
